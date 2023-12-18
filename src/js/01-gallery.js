@@ -5,6 +5,7 @@ import { galleryItems } from './gallery-items';
 
 const galleryEl = document.querySelector('.gallery');
 galleryEl.insertAdjacentHTML('afterbegin', galleryMarkupCreator(galleryItems));
+galleryEl.style.listStyle = 'none';
 
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',

@@ -15,15 +15,6 @@ const feedback = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
 
 populateInputs();
 
-function populateInputs() {
-  const savedMessage = JSON.parse(localStorage.getItem(STORAGE_KEY));
-
-  if (savedMessage) {
-    refs.input.value = savedMessage.email || '';
-    refs.textarea.value = savedMessage.message || '';
-  }
-}
-
 function onInput(e) {
   feedback[e.target.name] = e.target.value;
 
@@ -41,6 +32,13 @@ function onFormSubmit(e) {
 
   console.log(feedback);
 
-  e.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
+  e.currentTarget.reset();
+}
+
+function populateInputs() {
+  if (feedback) {
+    refs.input.value = feedback.email || '';
+    refs.textarea.value = feedback.message || '';
+  }
 }
